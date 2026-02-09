@@ -1,0 +1,2 @@
+# GoldAI
+predect gold
