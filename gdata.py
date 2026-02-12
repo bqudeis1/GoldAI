@@ -8,15 +8,22 @@ from dukascopy import Dukascopy
 INSTRUMENT = "XAUUSD"
 TIMEFRAME = "M1"
 START_YEAR = 2015
-END_YEAR   = 2019  # يشمل حتى 2019
+END_YEAR   = 2019  # خمس سنوات
 SLEEP_SEC = 2
 WEEK_DAYS = 7      # تنزيل أسبوع أسبوع
+
+# اسم الفولدر الذي سيحوي الملفات
+DATA_FOLDER = "Gold_Data_XAUUSD"
+
+# إنشاء الفولدر إذا لم يكن موجود
+if not os.path.exists(DATA_FOLDER):
+    os.makedirs(DATA_FOLDER)
 
 duk = Dukascopy()
 
 # -------- دالة لتحديد تاريخ البدء بناء على resume --------
 def get_resume_start(year):
-    file_name = f"XAUUSD_M1_{year}.parquet"
+    file_name = os.path.join(DATA_FOLDER, f"XAUUSD_M1_{year}.parquet")
     if os.path.exists(file_name):
         df = pd.read_parquet(file_name)
         last_time = pd.to_datetime(df["time"].iloc[-1])
@@ -30,7 +37,7 @@ def save_week_parquet(data, year):
         return
     df = pd.DataFrame(data)
     df["time"] = pd.to_datetime(df["time"], unit="ms")
-    file_name = f"XAUUSD_M1_{year}.parquet"
+    file_name = os.path.join(DATA_FOLDER, f"XAUUSD_M1_{year}.parquet")
 
     # إذا الملف موجود → append بدون header
     if os.path.exists(file_name):
@@ -62,4 +69,4 @@ for year in range(START_YEAR, END_YEAR + 1):
         current = week_end + timedelta(minutes=1)
         time.sleep(SLEEP_SEC)
 
-print("All done! Data saved per year in Parquet format.")
+print(f"All done! Data saved per year in folder: {DATA_FOLDER}")
