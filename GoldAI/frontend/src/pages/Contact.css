@@ -1,0 +1,128 @@
+@reference "tailwindcss";
+
+/* --- MAIN CONTAINER --- */
+.contact-container {
+  @apply h-[100dvh] w-full overflow-hidden bg-[#0b0e14] flex flex-col;
+}
+
+.contact-scroller {
+  @apply flex-1 overflow-y-auto px-12 py-12;
+}
+
+/* --- HEADER --- */
+.contact-header {
+  @apply text-center mb-24;
+}
+
+.header-icon-wrapper {
+  @apply inline-block p-5 bg-white/5 rounded-3xl border border-white/5 mb-8 shadow-2xl;
+}
+
+.contact-title {
+  @apply text-7xl font-black text-white tracking-tighter mb-4;
+}
+
+.contact-subtitle {
+  @apply text-slate-500 font-mono uppercase tracking-[0.4em] text-[10px];
+}
+
+/* --- GRID & CARDS --- */
+.contact-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1400px] mx-auto;
+}
+
+.contact-card {
+  @apply bg-[#161a23] border p-10 rounded-[3rem] flex flex-col justify-between 
+         transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)];
+}
+
+.role-tag {
+  @apply text-[9px] font-black text-yellow-500/60 uppercase tracking-widest block mb-2;
+}
+
+.person-name {
+  @apply text-3xl font-bold text-white tracking-tight mb-4;
+}
+
+.person-specialty {
+  @apply text-xs text-slate-500 font-mono leading-relaxed;
+}
+
+/* --- CONTACT METHODS --- */
+.contact-methods {
+  @apply my-10 space-y-4;
+}
+
+.method-item {
+  @apply flex items-center gap-4 py-3 border-b border-white/5 cursor-pointer;
+}
+
+.method-text {
+  @apply text-sm text-slate-300 font-mono;
+}
+
+/* --- ACTIONS --- */
+.card-actions {
+  @apply flex items-center gap-4 mt-auto;
+}
+
+.action-btn {
+  @apply flex-1 bg-white/5 hover:bg-white/10 text-white py-4 rounded-2xl 
+         flex items-center justify-center gap-3 font-bold text-[10px] 
+         uppercase tracking-widest transition-all;
+}
+
+.social-mini-links {
+  @apply flex gap-4;
+}
+
+.social-mini-icon {
+  @apply text-slate-600 hover:text-white cursor-pointer transition-colors;
+}
+
+
+/* =========================================
+   📱 MOBILE OPTIMIZATIONS
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. Reduce Container Padding */
+  .contact-scroller {
+    @apply px-6 py-8;
+  }
+
+  /* 2. Shrink Header & Title */
+  .contact-header {
+    @apply mb-12;
+  }
+
+  .header-icon-wrapper {
+    @apply p-4 mb-6;
+  }
+
+  .contact-title {
+    @apply text-4xl mb-2; /* Smaller title */
+  }
+
+  /* 3. Adjust Card Layout */
+  .contact-grid {
+    @apply gap-6;
+  }
+
+  .contact-card {
+    @apply p-6 rounded-[2rem]; /* Tighter padding and radius */
+  }
+
+  /* 4. Adjust Typography inside Cards */
+  .person-name {
+    @apply text-2xl mb-2;
+  }
+
+  .contact-methods {
+    @apply my-6 space-y-3;
+  }
+
+  .method-item {
+    @apply py-2;
+  }
+}

@@ -1,0 +1,93 @@
+@reference "tailwindcss";
+
+/* --- GLOBAL RESETS --- */
+:root {
+  background-color: #0b0e14;
+  color: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevents "bounce" effect on Mac/iOS */
+  font-family: 'Inter', sans-serif;
+  -webkit-tap-highlight-color: transparent; /* Removes blue highlight on mobile tap */
+}
+
+/* --- APP SHELL --- */
+.app-shell {
+  @apply relative w-full h-[100dvh] flex flex-col bg-[#0b0e14];
+}
+
+/* --- FLOATING MENU BUTTON --- */
+.nav-trigger {
+  @apply fixed z-[110] flex items-center justify-center 
+         bg-yellow-500 rounded-2xl text-slate-900 
+         shadow-[0_10px_30px_rgba(234,179,8,0.3)] 
+         hover:scale-105 active:scale-95 transition-all duration-200;
+
+  /* DESKTOP (Default) */
+  top: 2rem;
+  left: 2rem;
+  width: 3.5rem; /* w-14 */
+  height: 3.5rem; /* h-14 */
+}
+
+/* --- CONTENT AREA --- */
+.main-viewport {
+  @apply flex-1 w-full h-full overflow-y-auto relative;
+  
+  /* Smooth Momentum Scrolling for iOS */
+  -webkit-overflow-scrolling: touch; 
+}
+
+/* --- SCROLLBAR STYLING --- */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(234, 179, 8, 0.15);
+  border-radius: 20px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(234, 179, 8, 0.4);
+}
+
+/* --- GLOBAL ANIMATIONS --- */
+.fade-enter { opacity: 0; }
+.fade-enter-active { opacity: 1; transition: opacity 300ms ease-in; }
+
+/* =========================================
+   📱 MOBILE OPTIMIZATIONS
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. Shrink Menu Button & Move Closer to Corner */
+  .nav-trigger {
+    top: 1rem;       /* Closer to top */
+    left: 1rem;      /* Closer to left */
+    width: 3rem;     /* Smaller (w-12) */
+    height: 3rem;    /* Smaller (h-12) */
+    border-radius: 12px; /* Slightly sharper corners */
+  }
+
+  /* 2. Adjust Watermark/Logo */
+  .fixed.bottom-8.right-8 {
+    bottom: 1.5rem !important;
+    right: 1.5rem !important;
+    opacity: 0.15; /* Slightly more visible on mobile */
+  }
+  .fixed.bottom-8.right-8 img {
+    width: 4rem; /* Smaller logo */
+  }
+
+  /* 3. Main Content Padding for Notch Support */
+  .main-viewport {
+    /* Ensures content isn't hidden behind the notch */
+    padding-top: env(safe-area-inset-top); 
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

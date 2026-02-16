@@ -1,0 +1,121 @@
+@reference "tailwindcss";
+
+/* --- MAIN LAYOUT --- */
+.command-center-container {
+  @apply h-[100dvh] w-full overflow-hidden bg-[#0b0e14] flex flex-col;
+}
+
+.content-scroller {
+  @apply flex-1 overflow-y-auto overflow-x-hidden px-16 pt-2 pb-12;
+}
+
+.inner-layout {
+  @apply max-w-[1750px] mx-auto;
+}
+
+/* --- HEADER --- */
+.blade-header {
+  @apply flex items-center gap-10 mb-2;
+}
+
+.header-logo {
+  @apply w-36 h-36 object-contain drop-shadow-[0_0_40px_rgba(234,179,8,0.2)];
+}
+
+.header-meta {
+  @apply flex flex-col gap-2;
+}
+
+.status-pill {
+  @apply flex items-center gap-3 bg-[#161a23] rounded-full border border-white/5 px-4 py-2 shadow-xl;
+}
+
+.status-text {
+  @apply font-black text-slate-300 tracking-[0.2em] uppercase;
+}
+
+.node-text {
+  @apply text-slate-600 tracking-[0.3em] font-bold;
+}
+
+/* --- METRICS GRID --- */
+.metrics-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-5 mb-6;
+}
+
+.metric-card {
+  @apply bg-[#161a23] border border-white/5 rounded-[2.5rem] p-7 transition-all duration-300 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col;
+}
+
+.signal-highlight {
+  @apply border-yellow-500/20 bg-gradient-to-b from-[#1c212b] to-[#161a23];
+}
+
+.metric-label {
+  @apply text-[9px] uppercase font-black tracking-[0.3em] text-slate-600 mb-5 block;
+}
+
+.metric-value {
+  @apply text-6xl font-medium tracking-tighter text-white leading-none;
+}
+
+/* REMOVED text-7xl FROM HERE SO INLINE STYLE WORKS */
+.signal-value-expanded {
+  @apply font-black drop-shadow-[0_0_25px_rgba(234,179,8,0.5)] leading-none text-center transition-all duration-300;
+}
+
+/* --- CHART SECTION --- */
+.chart-section-expanded {
+  @apply w-full;
+}
+
+.chart-wrapper-massive {
+  @apply bg-[#161a23] border border-white/5 rounded-[3.5rem] overflow-hidden shadow-2xl;
+  height: 700px;
+}
+
+.chart-canvas {
+  @apply w-full h-full;
+}
+
+/* Utilities */
+.profit { @apply text-green-400; }
+.icon-gold { @apply text-yellow-500; }
+.icon-green { @apply text-green-500; }
+.custom-scrollbar::-webkit-scrollbar { @apply w-[4px]; }
+.custom-scrollbar::-webkit-scrollbar-thumb { @apply bg-yellow-500/15 rounded-full; }
+
+/* =========================================   📱 MOBILE OPTIMIZATIONS   ========================================= */
+@media (max-width: 768px) {
+  .content-scroller {
+    @apply px-5 pt-8 pb-24;
+  }
+  .blade-header {
+    @apply flex-col items-center text-center gap-4 mb-8;
+  }
+  .header-logo {
+    @apply w-48 h-48 mb-2 mx-auto; 
+  }
+  .header-meta {
+    @apply items-center;
+  }
+  .status-pill {
+    @apply py-1.5 px-3;
+  }      
+  .status-text {
+    @apply text-[8px];
+  }
+  .metrics-grid {
+    @apply gap-4 mb-8;
+  }
+  .metric-card {
+    @apply p-6 rounded-[2rem];
+  }
+  .metric-value {
+    @apply text-5xl; 
+  }
+  .chart-wrapper-massive {
+    @apply rounded-[2rem];
+    height: 500px; 
+  }
+}

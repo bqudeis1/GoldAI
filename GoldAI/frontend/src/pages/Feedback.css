@@ -1,0 +1,142 @@
+@reference "tailwindcss";
+
+/* --- MAIN CONTAINER --- */
+.feedback-container {
+  @apply h-[100dvh] w-full bg-[#0b0e14] flex flex-col;
+}
+
+/* --- HEADER --- */
+.feedback-header {
+  /* Default Desktop: High padding */
+  @apply flex justify-between items-end mb-12 px-16 pt-12;
+}
+
+.avg-display {
+  @apply text-right bg-[#161a23] p-6 rounded-3xl border border-white/5 shadow-2xl;
+}
+
+.avg-label {
+  @apply block text-[10px] font-black tracking-[0.3em] text-slate-600 mb-2;
+}
+
+.avg-value {
+  @apply flex items-center gap-3 text-3xl font-mono font-black text-white;
+}
+
+/* --- LAYOUT --- */
+.feedback-layout {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-10 px-16 pb-20;
+}
+
+/* --- FORM STYLING --- */
+.feedback-form-card {
+  @apply bg-[#161a23] p-10 rounded-[2.5rem] border border-white/5 shadow-2xl;
+}
+
+.form-subtitle {
+  @apply text-[11px] font-black tracking-[0.4em] text-yellow-500/50 mb-8 uppercase;
+}
+
+.terminal-input {
+  @apply w-full bg-[#0b0e14] border border-white/10 rounded-xl p-4 mb-4 text-white font-mono text-sm focus:border-yellow-500/50 outline-none;
+}
+
+.rating-selector {
+  @apply my-8 p-6 bg-[#0b0e14] rounded-2xl border border-white/5;
+}
+
+.selector-label {
+  @apply block text-[10px] font-bold text-slate-500 tracking-widest mb-4;
+}
+
+.sniper-icons {
+  @apply flex gap-4;
+}
+
+.sniper-btn {
+  @apply text-slate-800 transition-all duration-300 transform hover:scale-125;
+}
+
+.sniper-btn.active {
+  @apply text-yellow-500 drop-shadow-[0_0_10px_rgba(234,179,8,0.5)];
+}
+
+.terminal-textarea {
+  @apply w-full h-32 bg-[#0b0e14] border border-white/10 rounded-xl p-4 mb-6 text-white font-mono text-sm focus:border-yellow-500/50 outline-none resize-none;
+}
+
+.submit-btn {
+  @apply w-full flex items-center justify-center gap-3 bg-yellow-500 text-black font-black py-4 rounded-xl hover:bg-yellow-400 transition-colors uppercase tracking-widest text-xs;
+}
+
+/* --- REVIEWS FEED --- */
+.review-node {
+  @apply bg-[#161a23] p-6 rounded-2xl border border-white/5 mb-4 hover:border-yellow-500/20 transition-all;
+}
+
+.review-top {
+  @apply flex justify-between items-center mb-3;
+}
+
+.review-user {
+  @apply font-mono text-xs font-bold text-slate-400;
+}
+
+.review-text {
+  @apply text-slate-300 text-sm italic leading-relaxed;
+}
+
+/* =========================================
+   📱 MOBILE OPTIMIZATIONS
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. Reset Container & Layout Padding */
+  .feedback-header {
+    @apply px-6 pt-24 mb-8 flex-col items-start gap-6;
+  }
+
+  .feedback-layout {
+    @apply px-6 gap-8;
+  }
+
+  /* 2. Compact Header Display */
+  .avg-display {
+    @apply p-4 w-full text-left;
+  }
+
+  .avg-value {
+    @apply text-2xl;
+  }
+
+  /* 3. Form Card Adjustments */
+  .feedback-form-card {
+    @apply p-6 rounded-[2rem];
+  }
+
+  .form-subtitle {
+    @apply mb-6;
+  }
+
+  .input-group {
+    @apply space-y-2;
+  }
+
+  /* 4. Rating Selector (Mobile Icons) */
+  .rating-selector {
+    @apply p-4 my-6;
+  }
+
+  .sniper-icons {
+    @apply gap-2 justify-between;
+  }
+
+  .sniper-btn svg {
+    @apply w-6 h-6; /* Slightly smaller icons for mobile */
+  }
+
+  /* 5. Reviews List Padding */
+  .reviews-feed {
+    @apply pb-10;
+  }
+}

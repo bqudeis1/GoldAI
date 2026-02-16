@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* 1. Import a professional Quant font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+/* 2. Global Resets */
+:root {
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  background-color: #0b0e14; /* Match our KINGS theme */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden; /* Lock the screen for the Trading Terminal feel */
+}
+
+/* 3. Base Typography for the Project */
+h1, h2, h3 {
+  @apply tracking-tighter leading-none;
+}
+
+code, .font-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* MOBILE FIX: Handle the "Notch" and Address Bar */
+@media (max-width: 768px) {
+  body {
+    /* Use Dynamic Height so the address bar doesn't cover the bottom menu */
+    min-height: 100dvh; 
+    
+    /* Optional: unlock body scroll if your inner div gets stuck */
+    /* overflow: auto; */ 
+  }
+}

@@ -1,0 +1,160 @@
+@reference "tailwindcss";
+
+/* --- MAIN CONTAINER --- */
+.archive-container {
+  @apply h-[100dvh] w-full overflow-hidden bg-[#0b0e14] flex flex-col;
+}
+
+.content-scroller {
+  @apply flex-1 overflow-y-auto overflow-x-hidden px-16 pt-24 pb-24;
+}
+
+.inner-layout {
+  @apply max-w-[1700px] mx-auto;
+}
+
+/* --- HEADER --- */
+.archive-header {
+  @apply mb-16 flex justify-between items-end border-b border-white/5 pb-8;
+}
+
+.archive-title {
+  @apply text-7xl font-black text-white tracking-tighter uppercase leading-none;
+}
+
+.node-text {
+  @apply text-slate-600 font-mono font-bold text-[10px] tracking-[0.4em] mt-2 block;
+}
+
+.status-badge {
+  @apply flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/5 text-[9px] font-black tracking-widest uppercase text-slate-400;
+}
+
+/* --- METRICS GRID --- */
+.metrics-grid {
+  @apply grid grid-cols-1 md:grid-cols-4 gap-6 mb-16;
+}
+
+.metric-card {
+  @apply bg-[#161a23] border border-white/5 rounded-[2.5rem] p-8 shadow-2xl;
+}
+
+.metric-label {
+  @apply text-[9px] uppercase font-black tracking-[0.3em] text-slate-500 mb-4 flex items-center gap-2;
+}
+
+.metric-value {
+  @apply text-4xl font-bold tracking-tighter text-white;
+}
+
+/* --- LOG TABLE --- */
+.log-table-wrapper {
+  @apply bg-[#161a23] border border-white/5 rounded-[3.5rem] p-10 shadow-2xl overflow-hidden;
+}
+
+.log-table {
+  @apply w-full text-left border-collapse;
+}
+
+.log-table th {
+  @apply pb-8 border-b border-white/5 text-[10px] text-slate-500 uppercase tracking-[0.3em] font-black whitespace-nowrap px-2;
+}
+
+.log-table td {
+  @apply py-6 border-b border-white/5 align-middle px-2;
+}
+
+.row-date {
+  @apply font-mono text-[11px] text-slate-500 tracking-tighter whitespace-nowrap;
+}
+
+.signal-tag {
+  @apply px-4 py-1.5 rounded-full text-[9px] font-black tracking-[0.2em] uppercase border whitespace-nowrap;
+}
+.signal-tag.buy { @apply bg-green-500/10 border-green-500/20 text-green-500; }
+.signal-tag.sell { @apply bg-red-500/10 border-red-500/20 text-red-500; }
+
+.price-flow {
+  @apply font-mono text-sm text-slate-300 whitespace-nowrap;
+}
+
+.profit-value {
+  @apply font-mono text-xl font-bold tracking-tighter whitespace-nowrap;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar { @apply w-1 h-1; }
+.custom-scrollbar::-webkit-scrollbar-thumb { @apply bg-white/10 rounded-full; }
+
+
+/* =========================================
+   📱 MOBILE OPTIMIZATIONS (FIXED)
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. Layout & Spacing */
+  .content-scroller {
+    @apply px-5 pt-20 pb-12;
+  }
+
+  .inner-layout {
+    @apply flex flex-col;
+  }
+
+  /* 2. Header Stack */
+  .archive-header {
+    @apply flex-col items-start gap-4 mb-8 border-b-0 pb-0;
+  }
+  
+  .archive-title {
+    @apply text-4xl leading-[0.9];
+  }
+
+  .status-badge {
+    @apply mt-2 px-3 py-1.5 text-[8px];
+  }
+
+  /* 3. Metrics (Compact Stack) */
+  .metrics-grid {
+    @apply gap-3 mb-8;
+  }
+  
+  .metric-card {
+    @apply p-5 rounded-[1.5rem] flex flex-row justify-between items-center;
+  }
+  
+  .metric-label {
+    @apply mb-0 text-[10px];
+  }
+  
+  .metric-value {
+    @apply text-2xl;
+  }
+
+  /* 4. Table (Full Scrollable View) */
+  .log-table-wrapper {
+    @apply p-0 bg-transparent border-0 rounded-none shadow-none overflow-visible;
+  }
+
+  /* Create a scroll container for the table */
+  .log-table-wrapper {
+    @apply overflow-x-auto block; 
+    /* Use webkit-overflow-scrolling for smooth iOS scroll */
+    -webkit-overflow-scrolling: touch; 
+  }
+
+  .log-table {
+    @apply min-w-[600px]; /* Ensures table is wide enough to not squish columns */
+  }
+
+  /* Reduce Padding inside table for mobile */
+  .log-table td, 
+  .log-table th {
+    @apply px-4 py-4;
+  }
+  
+  /* Style the scrollable area card */
+  .log-table-wrapper {
+    @apply bg-[#161a23] border border-white/5 rounded-[2rem] p-5;
+  }
+}
