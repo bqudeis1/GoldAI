@@ -1,0 +1,2 @@
+# GoldAI
+predict gold prices
